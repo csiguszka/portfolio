@@ -13,7 +13,7 @@ export function scrollAnimationCreater(
 ) {
   let first = true;
   let sumDuration = 0;
-
+  
   animationMap.forEach((mapItem) => {
     const element = scrollAnimationDatas[mapItem.name];
     console.log(element.animation);
@@ -23,7 +23,8 @@ export function scrollAnimationCreater(
         x: element.animation[0].x,
         y: element.animation[0].y,
         opacity: element.animation[0].opacity,
-        display: element.animation[0].display
+        display: element.animation[0].display,
+        backgroundColor: element.animation[0].bgColor
       },
       {
         scrollTrigger: {
@@ -40,6 +41,7 @@ export function scrollAnimationCreater(
         borderBottom: element.animation[1].borderBottom,
         opacity: element.animation[1].opacity,
         display: element.animation[1].display,
+        backgroundColor: element.animation[1].bgColor,
         invalidateOnRefresh: first ? true : false,
       }
     );

@@ -13,12 +13,14 @@ function CursorWithScrollAnimation({
   modalDivRef,
   windowsButtonRef,
   windowsPageRef,
+  folderDivRef
 }: {
   scrollDivRef: React.RefObject<HTMLDivElement | null>;
   okButtonRef: React.RefObject<HTMLButtonElement | null>;
   modalDivRef: React.RefObject<HTMLDivElement | null>;
   windowsButtonRef: React.RefObject<HTMLDivElement | null>;
   windowsPageRef: React.RefObject<HTMLDivElement | null>;
+  folderDivRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const cursorRef = useRef<HTMLDivElement>(null);
 
@@ -28,9 +30,10 @@ function CursorWithScrollAnimation({
       !scrollDivRef.current ||
       !modalDivRef.current ||
       !cursorRef.current ||
-      !windowsButtonRef.current || 
-      !windowsPageRef.current
-    ) {
+      !windowsButtonRef.current ||
+      !windowsPageRef.current ||
+      !folderDivRef.current
+  ) {
       return;
     }
 
@@ -93,7 +96,24 @@ function CursorWithScrollAnimation({
     };
 
     scrollAnimationCreater(scrollDivRef, animationMap, scrollAnimationDatas);
-  }, [okButtonRef, scrollDivRef, modalDivRef]);
+
+
+    // {/* HOVER */}
+    // const hoverAnimationMap: animationMap_model[] = [
+    //   {name: "folder", duration: 100}
+    // ]
+
+    // const folderAnimation: animtaion_model[] = [{bgColor: "red"}, {bgColor: "yellow"}]
+
+    // const scrollHoverAnimationDatas: scrollAnimationDatas_model = {
+    //   folder: {
+    //     ref: folderDivRef,
+    //     animation: folderAnimation
+    //   }
+    // }
+
+    // scrollAnimationCreater(scrollDivRef, hoverAnimationMap, scrollHoverAnimationDatas);
+  }, [okButtonRef, scrollDivRef, modalDivRef, folderDivRef, windowsButtonRef]);
 
   return (
     <div>

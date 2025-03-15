@@ -9,7 +9,8 @@ export interface animtaion_model {
   opacity?: number;
   borderRight?: number;
   borderBottom?: number;
-  display?: string
+  display?: string;
+  bgColor?: string;
 }
 
 export interface scrollAnimationDatas_model {

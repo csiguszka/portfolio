@@ -1,4 +1,5 @@
 import { Image, Menu, Power, Settings, User } from "lucide-react";
+import React from "react";
 
 const programs = [
   { letter: "C", items: [{ name: "CSS", icon: "/css.png", prior: false }] },
@@ -60,7 +61,7 @@ function WindowsPage({ windowsPageRef }: {windowsPageRef: React.RefObject<HTMLDi
   return (
     <div
       ref={windowsPageRef}
-      className="fixed bottom-[48px] w-[344px] bg-[rgb(205,205,205)] h-[650px] flex flex-col"
+      className="fixed bottom-[48px] w-[344px] bg-[rgb(205,205,205)] h-[650px] flex flex-col cursor-default"
     >
       {/* Bal oldali ikonok */}
         <div className="w-[48px] h-[48px] flex justify-center items-center absolute top-0">
@@ -68,16 +69,16 @@ function WindowsPage({ windowsPageRef }: {windowsPageRef: React.RefObject<HTMLDi
         </div>
       <div className="absolute bottom-0 left-0 flex flex-col">
         <div className="w-[48px] h-[48px] flex justify-center items-center">
-          <Power />
-        </div>
-        <div className="w-[48px] h-[48px] flex justify-center items-center">
-          <Settings />
+          <User />
         </div>
         <div className="w-[48px] h-[48px] flex justify-center items-center">
           <Image />
         </div>
         <div className="w-[48px] h-[48px] flex justify-center items-center">
-          <User />
+          <Settings />
+        </div>
+        <div className="w-[48px] h-[48px] flex justify-center items-center">
+          <Power />
         </div>
       </div>
 
@@ -86,12 +87,12 @@ function WindowsPage({ windowsPageRef }: {windowsPageRef: React.RefObject<HTMLDi
         className="ml-[48px] p-2 text-sm overflow-y-auto"
         style={{ height:"100%" }}
       >
-        <p className="font-semibold mb-2">Gyakran használt</p>
-        {programs.map((group) => {
+        <p className="h-[30px] font-medium hover:bg-[rgb(244,244,244)] pl-1 flex items-center">Gyakran használt</p>
 
-          return ( <div key={group.letter} className={`mb-${group.items.length > 2 ? '2' : '0'} cursor-default`}>
+        {programs.map((group) => {
+          return ( <div key={group.letter} className={`mb-${group.items.length > 2 ? '2' : '0'} `}>
             {/* Programok */}
-            {group.items.map((program) => {
+            {group.items.map((program, index) => {
               if (program.prior) {
                 return (
                   <div key={program.name} className="h-[30px] flex items-center gap-3 hover:bg-[rgb(244,244,244)] pl-1">
@@ -101,7 +102,7 @@ function WindowsPage({ windowsPageRef }: {windowsPageRef: React.RefObject<HTMLDi
                 )
               }
               else{
-                return <></>
+                return <React.Fragment key={index}></React.Fragment>
               }
           })}
           </div>)

@@ -12,16 +12,18 @@ function App() {
   const modalDivRef = useRef<HTMLDivElement>(null);
   const windowsButtonRef = useRef<HTMLDivElement>(null);
   const windowsPageRef = useRef<HTMLDivElement>(null);
+  const folderDivRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <div className="w-screen h-[calc(100vh-40px)] fixed bg-[url('/windows_bg.png')] bg-no-repeat">
-        <Folders />
+        <Folders folderDivRef={folderDivRef}/>
         <Cursor
           scrollDivRef={scrollDivRef}
           okButtonRef={okButtonRef}
           modalDivRef={modalDivRef}
           windowsButtonRef={windowsButtonRef}
           windowsPageRef={windowsPageRef}
+          folderDivRef={folderDivRef}
         />
         <Taskbar windowsButtonRef={windowsButtonRef} />
         <Modal okButtonRef={okButtonRef} modalDivRef={modalDivRef} />
